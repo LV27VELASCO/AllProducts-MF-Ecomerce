@@ -5,7 +5,6 @@ const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
     publicPath: "https://allproducts-mf-ecomerce.netlify.app/",
-    publicDev:"http://localhost:8081/"
   },
 
   resolve: {
