@@ -5,7 +5,7 @@ const deps = require("./package.json").dependencies;
 module.exports = (_,argv)=>{
   return{
   output: {
-    publicPath: argv.mode ==="development"
+    publicPath:argv.mode ==="development"
     ?"http//localhost:8081/"
     :"https://allproducts-mf-ecomerce.netlify.app/",
   },
