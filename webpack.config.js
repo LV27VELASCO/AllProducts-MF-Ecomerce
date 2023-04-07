@@ -2,9 +2,12 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 const deps = require("./package.json").dependencies;
-module.exports = {
+module.exports = (_,argv)=>{
+  return{
   output: {
-    publicPath: "https://allproducts-mf-ecomerce.netlify.app/",
+    publicPath: argv.mode ==="development"
+    ?"http//localhost:8081/"
+    :"https://allproducts-mf-ecomerce.netlify.app/",
   },
 
   resolve: {
@@ -63,4 +66,5 @@ module.exports = {
       template: "./src/index.html",
     }),
   ],
+}
 };
