@@ -6,7 +6,7 @@ module.exports = (_,argv)=>{
   return{
   output: {
     publicPath:argv.mode ==="development"
-    ?"http//localhost:8081/"
+    ?"http://localhost:8081/"
     :"https://allproducts-mf-ecomerce.netlify.app/",
   },
 
