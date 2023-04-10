@@ -1,0 +1,15 @@
+.cons{
+    max-width: 90%;
+    height: max-content;
+}
+
+.img-expand{
+    height: 300px;
+}
+.colorx{
+    color: rgba(200, 56, 56, 0.7);
+    transition: color .5s ease-in-out;
+}
+.colorx:hover{
+    color: rgb(232, 11, 11);
+}

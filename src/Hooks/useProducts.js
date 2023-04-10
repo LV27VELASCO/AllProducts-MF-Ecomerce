@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const useProducts = () => {
     const [allProducts, setAllProducts] = useState([])
     const [active, setactive] = useState(false)
-    
+    const [viewImg, setviewImg] = useState(false)
     //Traer todos los productos
     const getProducts=()=>{
         const url="https://e-commerce-api-v2.academlo.tech/api/v1/products";
@@ -37,7 +37,10 @@ const useProducts = () => {
          setactive(false)
       };
     
-    return {allProducts,hoverActive,hoverInactive,active,navProduct}
+      const verImagen=()=>{
+        setviewImg(!viewImg)
+      }
+    return {allProducts,hoverActive,hoverInactive,active,navProduct,viewImg,setviewImg,verImagen}
 }
 
 export default useProducts

@@ -3,7 +3,7 @@ import Products from './Products';
 
 const ContainerProducts = ({allProducts}) => {
   return (
-    <div className="flex justify-center  gap-4 flex-wrap">
+    <div className="flex justify-center gap-4 flex-wrap relative">
             {
               allProducts?.map(product=>(
                 <Products key={product.id} product={product}/>

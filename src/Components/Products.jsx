@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { Suspense} from 'react'
 import "../styles/products.css";
 import {NavLink} from "react-router-dom";
 import useProducts from '../Hooks/useProducts'
 import QuickView from '../Helpers/ViewEye';
+const ViewProduct = React.lazy(()=>import("./ViewProduct"))
 
 const Products = ({product}) => {
-  const {hoverActive,hoverInactive,active,navProduct}=useProducts();
+  const {hoverActive,hoverInactive,active,navProduct,viewImg,setviewImg,verImagen}=useProducts();
+
   return (
+    <>
     <div className="w-10/12 shadow-lg bg-white border border-gray-200 flex flex-col items-center justify-center py-4 px-2 rounded-lg  relative sm:w-4/12 md:w-3/12">
-        <div onMouseOver={()=>hoverActive()} onMouseOut={()=>hoverInactive()}  className="bg-gray-transparent absolute right-4 top-7 py-1 px-2 rounded-lg cursor-pointer hover:bg-marine transition ease-in duration-300">
+        <div onMouseOver={()=>hoverActive()} onMouseOut={()=>hoverInactive()} onClick={()=>verImagen()}  className="bg-gray-transparent absolute right-4 top-7 py-1 px-2 rounded-lg cursor-pointer hover:bg-marine transition ease-in duration-300">
             <i className="fa-sharp fa-regular fa-eye text-white"></i>
         </div>
         <span className={active==true?`${QuickView} block`:`${QuickView} hidden`}>Quick View</span>
@@ -33,6 +36,14 @@ const Products = ({product}) => {
         </div>
         <button onClick={()=>navProduct(product.id)} className="rounded-lg mt-3 bg-marine px-6 py-2 text-white font-bold">VIEW DETAILS</button>
     </div>
+    {
+        viewImg
+         &&
+        <Suspense fallback={"cargando..."}>
+            <ViewProduct url={product.images[0]?.url} title={product?.title} verImagen={verImagen}/>
+        </Suspense>
+    }
+    </>
   )
 }
 
