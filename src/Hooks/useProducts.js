@@ -9,6 +9,7 @@ const useProducts = () => {
     //Traer todos los productos
     const getProducts=()=>{
         const url="https://e-commerce-api-v2.academlo.tech/api/v1/products";
+        axios.defaults.baseURL="https://e-commerce-api-v2.academlo.tech";
         axios.get(url)
         .then((response)=>{
             if(response.status==200){
