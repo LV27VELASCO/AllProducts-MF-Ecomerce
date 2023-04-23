@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const useProducts = () => {
     const [allProducts, setAllProducts] = useState([])
     const [active, setactive] = useState(false)
     const [viewImg, setviewImg] = useState(false)
+
+    const navigate=useNavigate();
     //Traer todos los productos
     const getProducts=()=>{
         const url="https://e-commerce-api-v2.academlo.tech/api/v1/products";
@@ -26,7 +28,7 @@ const useProducts = () => {
 
     //navegar a producto
     const navProduct=(id)=>{
-        <NavLink to={id}/>
+        navigate(`/product/${id}`)
     }
 
     //mostrar resumen
